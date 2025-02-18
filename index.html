@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 9 Produits Du Jour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 25px;
+            font-size: 32px;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .main-content {
+            display: flex;
+            padding: 20px;
+            justify-content: space-between;
+        }
+
+        .sidebar-left, .sidebar-right {
+            width: 300px;
+            margin: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            position: relative;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .carousel-inner {
+            display: flex;
+            flex-direction: column;
+            animation: slide 40s infinite;
+            animation-delay: 1s;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        @keyframes slide {
+            0% { transform: translateY(0); }
+            33% { transform: translateY(-100%); }
+            66% { transform: translateY(-200%); }
+            100% { transform: translateY(0); }
+        }
+
+        .search-section, .sort-section {
+            margin-bottom: 20px;
+        }
+
+        .search-section input, .sort-section select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            flex-grow: 2;
+            justify-items: center;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 350px;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: 180px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        .buy-btn {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+            margin-top: auto;
+            border-radius: 5px;
+        }
+
+        .buy-btn:hover {
+            background: #218838;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Top 9 Produits De la Semaine</h1>
+    <p>Bienvenue sur notre site - Trouvez les meilleurs produits actuel au meilleur prix !</p>
+</header>
+
+<div class="main-content">
+    <div class="sidebar-left">
+        <div class="search-section">
+            <input type="text" id="search" placeholder="Recherche par nom de produit">
+            <button onclick="searchProduct()">Rechercher</button>
+        </div>
+
+        <div class="sort-section">
+            <h2>Tri article par type :</h2>
+            <select id="sortBy" onchange="sortProducts()">
+                <option value="nameAsc">Nom croissant</option>
+                <option value="nameDesc">Nom décroissant</option>
+                <option value="priceAsc">Prix croissant</option>
+                <option value="priceDesc">Prix décroissant</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="products" id="productList">
+        <!-- Produits seront ajoutés ici dynamiquement -->
+    </div>
+
+    <div class="sidebar-right">
+        <div class="carousel">
+            <div class="carousel-inner">
+                <img src="https://ae-pic-a1.aliexpress-media.com/kf/S3e033aac68e94147bfa8bf58f7b52040c.jpg_960x960q75.jpg_.avif" alt="Produit 1">
+                <img src="https://ae-pic-a1.aliexpress-media.com/kf/S8bd804537d4b47d4ad1d3f654fe640f9X.jpg_220x220q75.jpg_.avif" alt="Produit 2">
+                <img src="https://ae-pic-a1.aliexpress-media.com/kf/Sd939de6c10e745ea8c356dc3fac9366ef.jpg_960x960q75.jpg_.avif" alt="Produit 3">
+                <img src="https://ae-pic-a1.aliexpress-media.com/kf/Sec51a9ebb9b54009aaea59cfd3443cab3.jpg_220x220q75.jpg_.avif" alt="Produit 4">
+                <img src="https://ae-pic-a1.aliexpress-media.com/kf/S0fbb0eb82e09479fab8298f8336cdf7ae.jpg_960x960q75.jpg_.avif" alt="Produit 5">
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Votre entreprise. Tous droits réservés.</p>
+</footer>
+
+<script>
+    const productsData = [
+        { name: "Écouteurs Bluetooth sans fil", price: 29.99, image: "https://ae-pic-a1.aliexpress-media.com/kf/S3e033aac68e94147bfa8bf58f7b52040c.jpg_960x960q75.jpg_.avif", link: "c.html" },
+        { name: "Montre connectée fitness", price: 39.99, image: "https://ae-pic-a1.aliexpress-media.com/kf/S8bd804537d4b47d4ad1d3f654fe640f9X.jpg_220x220q75.jpg_.avif", link: "https://fr.aliexpress.com/item/1005000987654321.html" },
+        { name: "Lampes LED décoratives", price: 19.99, image: "https://ae-pic-a1.aliexpress-media.com/kf/Sd939de6c10e745ea8c356dc3fac9366ef.jpg_960x960q75.jpg_.avif", link: "https://fr.aliexpress.com/item/1005001122334455.html" },
+        { name: "Blender portable USB", price: 24.99, image: "https://ae-pic-a1.aliexpress-media.com/kf/Sec51a9ebb9b54009aaea59cfd3443cab3.jpg_220x220q75.jpg_.avif", link: "https://fr.aliexpress.com/item/1005002233445566.html" },
+        { name: "Bouteille d'eau pliable", price: 14.99, image: "https://ae-pic-a1.aliexpress-media.com/kf/S0fbb0eb82e09479fab8298f8336cdf7ae.jpg_960x960q75.jpg_.avif", link: "https://fr.aliexpress.com/item/1005003344556677.html" },
+        { name: "Organisateur de bureau", price: 19.99, image: "https://ae-pic-a1.aliexpress-media.com/kf/S6b706445f95844b6a4c3b033b9ccbfbfe.jpg_960x960q75.jpg_.avif", link: "https://fr.aliexpress.com/item/1005004455667788.html" },
+        { name: "Masque de sommeil", price: 9.99, image: "https://ae-pic-a1.aliexpress-media.com/kf/S2a8507ea8f01498bb2411410c3ea8f47s.jpg_960x960q75.jpg_.avif", link: "https://fr.aliexpress.com/item/1005008267491556.html" },
+        { name: "Chaise ergonomique", price: 89.99, image: "https://ae-pic-a1.aliexpress-media.com/kf/S19b134a96f804d95aa7a8f0e7f7161f5L.jpg_960x960q75.jpg_.avif", link: "https://fr.aliexpress.com/item/1005006677889900.html" },
+        { name: "Porte-clés en métal", price: 4.99, image: "https://ae-pic-a1.aliexpress-media.com/kf/Hee098c223a0c4867bec0efb6dfa5f45dJ.jpg_960x960q75.jpg_.avif", link: "https://fr.aliexpress.com/item/1005007788990011.html" }
+    ];
+
+    function displayProducts(products) {
+        const productList = document.getElementById('productList');
+        productList.innerHTML = '';
+        products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
+            productDiv.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>Prix: ${product.price.toFixed(2)} €</p>
+                <a href="${product.link}" class="buy-btn">Acheter maintenant</a>
+            `;
+            productList.appendChild(productDiv);
+        });
+    }
+
+    function searchProduct() {
+        const searchInput = document.getElementById('search').value.toLowerCase();
+        const filteredProducts = productsData.filter(product => product.name.toLowerCase().includes(searchInput));
+        displayProducts(filteredProducts);
+    }
+
+    function sortProducts() {
+        const sortBy = document.getElementById('sortBy').value;
+        let sortedProducts = [...productsData];
+        if (sortBy === 'nameAsc') {
+            sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (sortBy === 'nameDesc') {
+            sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+        } else if (sortBy === 'priceAsc') {
+            sortedProducts.sort((a, b) => a.price - b.price);
+        } else if (sortBy === 'priceDesc') {
+            sortedProducts.sort((a, b) => b.price - a.price);
+        }
+        displayProducts(sortedProducts);
+    }
+
+    // Initial display
+    displayProducts(productsData);
+</script>
+
+</body>
+</html>

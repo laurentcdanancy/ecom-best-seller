@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visionneur de Photos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .product-info, .main-image, .purchase-info {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 30%;
+        }
+        .image-section {
+            display: flex;
+            align-items: flex-start; /* Alignement des miniatures en haut */
+            gap: 10px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnails {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: auto;
+        }
+
+        .main-image img {
+            width: 400px;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <h1>Top 9 Produits De la Semaine</h1>
+        <p>Bienvenue sur notre site - Trouvez les meilleurs produits actuel au meilleur prix !</p>
+    </header>
+
+<div class="container">
+
+    <div class="main-image" id="mainImage">
+        <img src="https://ae-pic-a1.aliexpress-media.com/kf/Sec51a9ebb9b54009aaea59cfd3443cab3.jpg_220x220q75.jpg_.avif" alt="Main Image">
+        <div class="thumbnails">
+            <div class="thumbnail" onclick="changeImage('https://ae-pic-a1.aliexpress-media.com/kf/S3e033aac68e94147bfa8bf58f7b52040c.jpg_960x960q75.jpg_.avif')">
+                <img src="https://ae-pic-a1.aliexpress-media.com/kf/S3e033aac68e94147bfa8bf58f7b52040c.jpg_960x960q75.jpg_.avif" alt="Image 1">
+            </div>
+            <div class="thumbnail" onclick="changeImage('https://ae-pic-a1.aliexpress-media.com/kf/S8bd804537d4b47d4ad1d3f654fe640f9X.jpg_220x220q75.jpg_.avif')">
+                <img src="https://ae-pic-a1.aliexpress-media.com/kf/S8bd804537d4b47d4ad1d3f654fe640f9X.jpg_220x220q75.jpg_.avif" alt="Image 2">
+            </div>
+            <div class="thumbnail" onclick="changeImage('https://ae-pic-a1.aliexpress-media.com/kf/Sd939de6c10e745ea8c356dc3fac9366ef.jpg_960x960q75.jpg_.avif')">
+                <img src="https://ae-pic-a1.aliexpress-media.com/kf/Sd939de6c10e745ea8c356dc3fac9366ef.jpg_960x960q75.jpg_.avif" alt="Image 3">
+            </div>
+        </div>
+    </div>
+
+    <div class="product-info">
+        <h2>Foulard Bandana pour femmes 70cm</h2>
+        <p>Mode Paisley imprimé mouchoir soie Satin Hijab écharpes femme col carré écharpes livraison directe</p>
+        <p><strong>Prix : 3,19€ (11% de réduction sur 3,59€)</strong></p>
+        <p>Évaluations : 4.9 / 5 (22 Avis)</p>
+        <p>127 vendus</p>
+        <p><strong>Couleur :</strong> W918-1, W918-19, W918-3, ...</p>
+        <p><strong>Taille :</strong> 70X70CM</p>
+        <h3>Caractéristiques :</h3>
+        <ul>
+            <li>Fabriquée à partir de satin de soie luxueux</li>
+            <li>Imprimé paisley dynamique</li>
+            <li>Polyvalente comme foulard de tête</li>
+            <li>Utilisation : Dropship</li>
+        </ul>
+    </div>
+
+ 
+    <div class="purchase-info">
+        <h3>Détails d'Achat</h3>
+        <p><strong>Prix : </strong>3,19€</p>
+        <p><strong>Livraison : </strong>2,59€</p>
+        <p>Livraison gratuite dès 8,80€ d'achat</p>
+        <p>Estimation de livraison : 27 fév. - 04 mars</p>
+        <a href="https://fr.aliexpress.com/item/1005008765432100.html" class="buy-btn">Acheter maintenant</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Visionneur de Photos. Tous droits réservés.</p>
+</footer>
+
+<script>
+    function changeImage(imageUrl) {
+        const mainImage = document.getElementById('mainImage').querySelector('img');
+        mainImage.src = imageUrl;
+    }
+</script>
+
+</body>
+</html>
