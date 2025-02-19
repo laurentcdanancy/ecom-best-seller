@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top 9 Produits Du Jour</title>
-    <style>
+   <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -12,74 +12,75 @@
             display: flex;
             flex-direction: column;
         }
-
+    
         header {
             background: #333;
             color: white;
-            padding: 25px;
-            font-size: 32px;
+            padding: 15px;
+            font-size: 1.5rem;
             text-align: center;
             width: 100%;
             font-weight: bold;
         }
-
+    
         header h1 {
             margin: 0;
         }
-
+    
         header p {
-            font-size: 18px;
+            font-size: 1rem;
             margin-top: 5px;
         }
-
+    
         .main-content {
             display: flex;
+            flex-wrap: wrap;
             padding: 20px;
             justify-content: space-between;
         }
-
+    
         .sidebar-left, .sidebar-right {
-            width: 300px;
-            margin: 0 10px;
+            flex: 1 1 300px;
+            margin: 10px;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 10px;
-            position: relative;
         }
-
+    
         .carousel {
             width: 100%;
-            height: 600px;
+            height: 300px;
             overflow: hidden;
             border-radius: 8px;
             margin-bottom: 20px;
         }
-
+    
         .carousel-inner {
             display: flex;
             flex-direction: column;
             animation: slide 40s infinite;
             animation-delay: 1s;
         }
-
+    
         .carousel-inner img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 8px;
         }
-
+    
         @keyframes slide {
             0% { transform: translateY(0); }
-            33% { transform: translateY(-100%); }
-            66% { transform: translateY(-200%); }
+            25% { transform: translateY(-100%); }
+            50% { transform: translateY(-200%); }
+            75% { transform: translateY(-100%); }
             100% { transform: translateY(0); }
         }
-
+    
         .search-section, .sort-section {
             margin-bottom: 20px;
         }
-
+    
         .search-section input, .sort-section select {
             width: 100%;
             padding: 10px;
@@ -87,7 +88,7 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
-
+    
         .products {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -95,13 +96,13 @@
             flex-grow: 2;
             justify-items: center;
         }
-
+    
         .product {
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 10px;
             text-align: center;
-            width: 250px;
+            width: 250px; /* Taille d'origine pour les ordinateurs */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -109,18 +110,18 @@
             height: 350px;
             transition: transform 0.3s;
         }
-
+    
         .product:hover {
             transform: scale(1.05);
         }
-
+    
         .product img {
             width: 100%;
             height: 180px;
             border-radius: 5px;
             object-fit: cover;
         }
-
+    
         .buy-btn {
             background: #28a745;
             color: white;
@@ -130,17 +131,63 @@
             margin-top: auto;
             border-radius: 5px;
         }
-
+    
         .buy-btn:hover {
             background: #218838;
         }
-
+    
         footer {
             background: #333;
             color: white;
             padding: 10px;
             text-align: center;
             margin-top: 20px;
+        }
+    
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+    
+            .carousel {
+                height: 300px;
+            }
+    
+            .sidebar-left, .sidebar-right {
+                flex: 1 1 100%;
+                margin: 10px 0;
+            }
+    
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    
+        @media (max-width: 400px) {
+            header {
+                font-size: 1.2rem;
+                padding: 10px;
+            }
+    
+            .carousel {
+                height: 200px;
+            }
+    
+            .products {
+                grid-template-columns: repeat(2, 1fr); /* Deux produits par ligne sur les téléphones */
+                gap: 20px; /* Réduire l'espace entre les produits */
+            }
+    
+            .product {
+                width: calc(30% - 10px); /* Réduire la largeur de 10% */
+                height: 315px; /* Réduire la hauteur de 10% */
+            }
+    
+            .product img {
+                height: 162px; /* Réduire la hauteur de l'image de 10% */
+            }
         }
     </style>
 </head>
